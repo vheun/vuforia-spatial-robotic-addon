@@ -42,7 +42,7 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this
  * file, You can obtain one at http://mozilla.org/MPL/2.0/.
  */
-var server = require('@libraries/hardwareInterfaces');
+var server = require('../../../../libraries/hardwareInterfaces');
 var settings = server.loadHardwareInterface(__dirname);
 
 exports.enabled = settings('enabled');
@@ -339,7 +339,13 @@ function startHardwareInterface() {
                 // 1 - back wheel B
                 // 3 - Head
 
-                hub.setMotorDegrees(1500, boostSpeed, 16, boostUuid);
+                //hub.setMotorDegrees(1500, boostSpeed, 16, boostUuid);
+
+                //hub.setMotorDegrees(685, boostSpeed, 0, boostUuid);
+                //hub.setMotorDegrees(685, (-1)*boostSpeed, 1, boostUuid);
+
+                hub.setMotorDegrees(800, boostSpeed, 16, boostUuid);
+                //hub.setMotorDegrees(-10, boostSpeed, 16, boostUuid);
             }
             
             if (wheelType === 0){

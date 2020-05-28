@@ -19,8 +19,9 @@ class WebSocketInterface {
         this._currentRobotAngle = {x:1, y:1, z:1, w:1};
         this._currentRobotPosition = {x:1, y:1};
 
-        console.log('MIR: WebSocket trying to connect...');
+        console.log('MIR: WebSocket trying to connect... at: ', ws_host + ':' + ws_port);
         const ws = new WebSocket(ws_host + ':' + ws_port);
+        
 
         ws.on('open', function open(event) {
             
@@ -50,7 +51,8 @@ class WebSocketInterface {
                                         y:parseFloat(parsedData['msg']['position']['y'])};
         }.bind(this));
 
-        ws.on('error', function error() {
+        ws.on('error', function error(data) {
+            console.log(data);
             console.warn('\x1b[36m', "MIR: Could not connect to MIR's WebSocket', '\x1b[32m', 'Is the robot on? ☹ ");
             this.eventEmitter.emit('ko');    // Notify indexjs
         }.bind(this));

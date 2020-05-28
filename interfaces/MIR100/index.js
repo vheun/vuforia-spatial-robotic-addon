@@ -42,7 +42,7 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this
  * file, You can obtain one at http://mozilla.org/MPL/2.0/.
  */
-var server = require('@libraries/hardwareInterfaces');
+var server = require('../../../../libraries/hardwareInterfaces');
 var settings = server.loadHardwareInterface(__dirname);
 
 const { WebSocketInterface } = require('./websocketInterface');
@@ -284,6 +284,7 @@ function startHardwareInterface() {
     });
 
     if (enableMIRConnection) connectWebsocket();
+    
     updateEvery(0, 100);
 }
 
@@ -356,7 +357,7 @@ function nodeReadCallback(data, checkpointIdx, pathIdx){
 
                     console.log('MIR: Next checkpoint triggered: ', nextCheckpointToTrigger.name);
                     
-                    server.write(objectName, "kineticAR", nextCheckpointToTrigger.name, 1);
+                    //server.write(objectName, "kineticAR", nextCheckpointToTrigger.name, 1);
 
                 } else {                                                                            // We reached end of path
 
@@ -557,7 +558,7 @@ function positionFromMIRToAR(newPosition, newDirectionAngle)
 function connectWebsocket(){
 
     websocket = new WebSocketInterface(hostIP, port);
-
+    
     websocket.eventEmitter.on('ok', function(){
         startRESTRequests();                            // Start REST requests
         exports.settings.isRobotConnected.value = true;

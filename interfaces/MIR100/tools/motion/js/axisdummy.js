@@ -12,9 +12,7 @@ export class AxisDummy extends THREE.Group {
         //robotDummy.matrixAutoUpdate = false;
         robotDummy.position.set(0,0,0);
         this.add( robotDummy );
-
-
-        /*
+        
         const materialcube_x = new THREE.MeshBasicMaterial( {color: 0xff0000} );
         let dummy_x = new THREE.Mesh( geometrycube, materialcube_x );
         robotDummy.add(dummy_x);
@@ -29,7 +27,6 @@ export class AxisDummy extends THREE.Group {
         let dummy_y = new THREE.Mesh( geometrycube, materialcube_y );
         robotDummy.add(dummy_y);
         dummy_y.position.set(0,50,0);
-
-         */
+        
     }
 }
